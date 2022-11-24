@@ -12,6 +12,8 @@ public class Attack : MonoBehaviour
 	public bool canAttack = true;
 	public bool isTimeToCheck = false;
 
+	public bool inDialogue;
+
 	public GameObject cam;
 
 	private void Awake()
@@ -28,6 +30,7 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+	
 		if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
 		{
 			canAttack = false;

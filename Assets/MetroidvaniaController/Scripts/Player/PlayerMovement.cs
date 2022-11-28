@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour {
 	public Interactable currentInteractable;
 	public bool inDialogue;
 
+	public Attack attack;
+
 	public float runSpeed = 40f;
 
 	float horizontalMove = 0f;
@@ -64,6 +66,7 @@ public class PlayerMovement : MonoBehaviour {
 			dash = false;
 			horizontalMove = 0f;
 			animator.SetFloat("Speed", 0f);
+			attack.canAttack = false;
 			
         }
 
@@ -115,5 +118,6 @@ public class PlayerMovement : MonoBehaviour {
 	public void ExitBlock()
     {
 		inDialogue = false;
+		attack.canAttack = true;
     }
 }

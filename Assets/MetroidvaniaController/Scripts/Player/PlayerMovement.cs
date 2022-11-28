@@ -58,6 +58,14 @@ public class PlayerMovement : MonoBehaviour {
 			Interact();
 		}
 		
+		if (inDialogue)
+        {
+			jump = false;
+			dash = false;
+			horizontalMove = 0f;
+			animator.SetFloat("Speed", 0f);
+			
+        }
 
 	}
 

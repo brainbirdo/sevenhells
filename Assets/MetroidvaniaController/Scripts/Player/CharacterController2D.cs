@@ -94,6 +94,7 @@ public class CharacterController2D : MonoBehaviour
 			Collider2D[] collidersWall = Physics2D.OverlapCircleAll(m_WallCheck.position, k_GroundedRadius, m_WhatIsGround);
 			for (int i = 0; i < collidersWall.Length; i++)
 			{
+                Debug.Log(collidersWall[i].gameObject.name);
 				if (collidersWall[i].gameObject != null)
 				{
 					isDashing = false;

@@ -21,12 +21,22 @@ public class PlayerMovement : MonoBehaviour {
 
 	float horizontalMove = 0f;
 	bool jump = false;
+	public bool canJump;
 	bool dash = false;
 
-	//bool dashAxis = false;
-	
-	// Update is called once per frame
-	void Update ()
+    //bool dashAxis = false;
+
+    private void Start()
+    {
+        canJump = true;
+    }
+
+	public void Jump(bool value)
+    {
+		canJump = value;
+    }
+    // Update is called once per frame
+    void Update ()
 	{
         if (!inDialogue)
         {
@@ -34,12 +44,15 @@ public class PlayerMovement : MonoBehaviour {
 
 			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-			if (Input.GetKeyDown(KeyCode.Space))
-			{
-				jump = true;
-			}
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+				if(canJump)
+                {
+					jump = true;
+				}
+            }
 
-			if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
 			{
 				dash = true;
 			}

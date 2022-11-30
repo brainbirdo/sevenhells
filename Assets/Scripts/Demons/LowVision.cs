@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class LowVision : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool fogOn = false;
+
     void Start()
     {
-        
+        fogOn = false;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Fog()
     {
-        
+        if (fogOn)
+        {
+            gameObject.SetActive(true);
+        }
+      
+        if (!fogOn)
+        {
+            gameObject.SetActive(false);
+        }
     }
+
 }

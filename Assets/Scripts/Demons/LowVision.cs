@@ -5,25 +5,23 @@ using Fungus;
 
 public class LowVision : MonoBehaviour
 {
-    public bool fogOn = false;
+    private SpriteRenderer spriteRenderer;
 
-    void Start()
+    private void Start()
     {
-        fogOn = false;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = false;
+    }
+
+    public void FogOn()
+    {
+        spriteRenderer.enabled = true;
 
     }
 
-    public void Fog()
+    public void FogOff()
     {
-        if (fogOn)
-        {
-            gameObject.SetActive(true);
-        }
-      
-        if (!fogOn)
-        {
-            gameObject.SetActive(false);
-        }
+        spriteRenderer.enabled = false;
     }
 
 }

@@ -9,13 +9,11 @@ public class DemonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Visible = true;
         gameObject.SetActive(true);
     }
 
     public void Vapeaway()
     {
-        Visible = false;
         gameObject.SetActive(false);
     }
 }

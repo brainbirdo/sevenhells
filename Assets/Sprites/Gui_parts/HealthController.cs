@@ -5,12 +5,20 @@ using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
-    public int playerHealth;
+    public float playerHealth;
+    public CharacterController2D controller;
 
     [SerializeField] private Image[] hearts;
 
     private void Start()
     {
+        UpdateHealth();
+    }
+
+
+    public void Update()
+    {
+        playerHealth = controller.life;
         UpdateHealth();
     }
 

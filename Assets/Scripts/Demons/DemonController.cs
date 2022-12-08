@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DemonController : MonoBehaviour
 {
-    public bool Visible;
 
     // Start is called before the first frame update
     void Start()

@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class NoBackwards : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    public bool canBackwards;
+    public PlayerMovement playerMovement;
+
     void Update()
     {
-        
+        if (!canBackwards)
+        {
+            playerMovement.horizontalMove = Mathf.Clamp(playerMovement.horizontalMove, 0, 40);
+        }
     }
+
+    public void BackwardsOff()
+    {
+        canBackwards= false;
+    }
+
+    private void Start()
+    {
+        canBackwards = true;
+    }
+
 }

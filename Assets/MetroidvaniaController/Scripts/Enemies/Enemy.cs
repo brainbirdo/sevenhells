@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour {
 	private bool facingRight = true;
 	
 	public float speed = 5f;
+	public DoubleHealth doubleHealth;
 
 	public bool isInvincible = false;
 	private bool isHitted = false;
@@ -82,8 +83,15 @@ public class Enemy : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player" && life > 0)
 		{
-			collision.gameObject.GetComponent<CharacterController2D>().ApplyDamage(2f, transform.position);
-		}
+			if (doubleHealth.doubleHealth)
+			{
+                collision.gameObject.GetComponent<CharacterController2D>().ApplyDamage(1f, transform.position);
+            }
+			else
+			{
+                collision.gameObject.GetComponent<CharacterController2D>().ApplyDamage(2f, transform.position);
+            }
+        }
 	}
 
 	IEnumerator HitTime()
@@ -101,7 +109,7 @@ public class Enemy : MonoBehaviour {
 		capsule.size = new Vector2(1f, 0.25f);
 		capsule.offset = new Vector2(0f, -0.8f);
 		capsule.direction = CapsuleDirection2D.Horizontal;
-		yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.25f);
 		rb.velocity = new Vector2(0, rb.velocity.y);
 		yield return new WaitForSeconds(3f);
 		Destroy(gameObject);

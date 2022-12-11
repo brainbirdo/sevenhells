@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public float runSpeed = 40f;
 
-	float horizontalMove = 0f;
+	public float horizontalMove = 0f;
 	bool jump = false;
 	public bool canJump;
 	bool dash = false;
@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour {
     {
 		canJump = value;
     }
+
     // Update is called once per frame
     void Update ()
 	{

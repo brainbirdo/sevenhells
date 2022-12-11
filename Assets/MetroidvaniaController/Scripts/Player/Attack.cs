@@ -10,6 +10,7 @@ public class Attack : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	public Animator animator;
 	public bool canAttack = true;
+	public bool canMagic = true;
 	public bool isTimeToCheck = false;
 
 	public bool inDialogue;
@@ -38,7 +39,7 @@ public class Attack : MonoBehaviour
 			StartCoroutine(AttackCooldown());
 		}
 
-		if (Input.GetKeyDown(KeyCode.Mouse1))
+		if (Input.GetKeyDown(KeyCode.Mouse1) && canMagic)
 		{
 			GameObject throwableWeapon = Instantiate(throwableObject, transform.position + new Vector3(transform.localScale.x * 0.5f,-0.2f), Quaternion.identity) as GameObject; 
 			Vector2 direction = new Vector2(transform.localScale.x, 0);
@@ -69,5 +70,15 @@ public class Attack : MonoBehaviour
 				cam.GetComponent<CameraFollow>().ShakeCamera();
 			}
 		}
+	}
+
+	public void DoubleAttack()
+	{
+		dmgValue = (dmgValue = 8f);
+	}
+
+	public void NoMagic()
+	{
+		canMagic = false;
 	}
 }

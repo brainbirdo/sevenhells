@@ -18,19 +18,26 @@ public class Enemy : MonoBehaviour {
 
 	public bool isInvincible = false;
 	private bool isHitted = false;
+	public bool soulAdded;
+
 
 	void Awake () {
 		fallCheck = transform.Find("FallCheck");
 		wallCheck = transform.Find("WallCheck");
+		soulAdded = false;
 		rb = GetComponent<Rigidbody2D>();
-	}
+		}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 
 		if (life <= 0) {
 			transform.GetComponent<Animator>().SetBool("IsDead", true);
-			StartCoroutine(DestroyEnemy());
+            StartCoroutine(DestroyEnemy());
+			if (!soulAdded)
+			{
+                CurrencyAddition();
+            }
 		}
 
 		isPlat = Physics2D.OverlapCircle(fallCheck.position, .2f, 1 << LayerMask.NameToLayer("Default"));
@@ -114,4 +121,10 @@ public class Enemy : MonoBehaviour {
 		yield return new WaitForSeconds(3f);
 		Destroy(gameObject);
 	}
+
+	void CurrencyAddition()
+	{
+		SoulCurrency.instance.AddSoul();
+		soulAdded= true;
+    }
 }

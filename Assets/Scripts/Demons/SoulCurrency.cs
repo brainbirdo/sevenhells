@@ -5,28 +5,30 @@ using Fungus;
 
 public class SoulCurrency : MonoBehaviour
 {
-    public Enemy enemy;
+    public static SoulCurrency instance;
+
     public Flowchart flowchart;
-    public float enemyHealth;
+    public float souls;
+
+    public Enemy enemy;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
-        flowchart.GetFloatVariable("Souls");
+        souls = flowchart.GetFloatVariable("Souls");
     }
 
     void Update()
     {
-        enemyHealth = (enemy.life);
-
-        if (enemyHealth <= 0)
-        {
-            CurrencyAdd();
-        }
+        flowchart.SetFloatVariable("Souls", souls);
     }
 
-    public void CurrencyAdd()
+    public void AddSoul()
     {
-        flowchart.SetFloatVariable("Souls", + 1f);
+        souls += 1;
     }
-
 }

@@ -330,7 +330,7 @@ public class CharacterController2D : MonoBehaviour
 		m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
 	}
 
-	IEnumerator WaitToDead()
+	public IEnumerator WaitToDead()
 	{
 		animator.SetBool("IsDead", true);
 		canMove = false;

@@ -10,7 +10,7 @@ public class StillBG : MonoBehaviour
 
     Vector2 startPosition;
 
-    float startZ;
+    public float startZ;
 
     Vector2 travel => (Vector2)cam.transform.position - startPosition;
     Vector2 parallaxFactor;

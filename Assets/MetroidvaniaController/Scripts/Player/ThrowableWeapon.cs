@@ -8,6 +8,9 @@ public class ThrowableWeapon : MonoBehaviour
 	public bool hasHit = false;
 	public float speed = 10f;
 
+    public float lifetime = 3.0f;
+    private float timer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +20,19 @@ public class ThrowableWeapon : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-		if ( !hasHit)
-		GetComponent<Rigidbody2D>().velocity = direction * speed;
-	}
+        if (!hasHit)
+        {
+            GetComponent<Rigidbody2D>().velocity = direction * speed;
+        }
 
-	void OnCollisionEnter2D(Collision2D collision)
+        timer += Time.deltaTime;
+        if (timer >= lifetime)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.tag == "Enemy")
 		{

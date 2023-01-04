@@ -41,6 +41,8 @@ public class CharacterController2D : MonoBehaviour
 	private float jumpWallDistX = 0; //Distance between player and wall
 	private bool limitVelOnWallJump = false; //For limit wall jump distance with low fps
 
+	public DoubleHealth doubleHealth;
+
 	[Header("Events")]
 	[Space]
 
@@ -280,6 +282,21 @@ public class CharacterController2D : MonoBehaviour
 				StartCoroutine(Stun(0.25f));
 				StartCoroutine(MakeInvincible(1f));
 			}
+		}
+	}
+
+	public void ApplyHealing()
+	{
+		if (!invincible && life > 0)
+		{
+			if (doubleHealth.doubleHealth)
+			{
+                life += 1;
+            }
+			else
+			{
+                life += 2;
+            }
 		}
 	}
 
